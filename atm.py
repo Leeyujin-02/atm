@@ -1,6 +1,7 @@
 # balance : 통장에 들어있는 기본 금액을 담는 변수
 # 1.입금 2.출금 3.영수증 보기 4.종료
 # deposit_amount > 예금금액이라는 변수명
+# withdraw_amount
 
 balance = 3000
 
@@ -16,8 +17,13 @@ while True:
         else:
             print("정신차리고, 제대로된 숫자형태로 입금액을 작성해줘!!!")
     if num == "2":
-        pass
-    
+        withdraw_amount = input("출금할 금액을 입력해주세요 : ")
+        if withdraw_amount.isdigit() and int(withdraw_amount) > 0:
+            withdraw_amount = min(balance,int(withdraw_amount))
+            balance -= int(withdraw_amount) # 출금 후 재할당
+            print(f"고객님이 출금하신 금액은 {withdraw_amount}원 이며, 현재 잔액은 {balance}입니다.")
+        else:
+            print("정신차리고, 제대로 된 금액을 작성해줘!!!")
     if num == "3":
         pass
     
